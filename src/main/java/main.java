@@ -12,8 +12,4 @@ public class main {
     void method2(){
     }
 
-    void method3(){
-
-    }
-
 }
