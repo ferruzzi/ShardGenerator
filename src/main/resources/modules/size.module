@@ -1,0 +1,22 @@
+The {item} is roughly {sqmk} square kilometers.  Roughly the size of a {descriptor} on the pre-sundered world.
+
+[sqkm]
+115
+163537
+9984404
+24710000
+
+[descriptor]
+city
+state
+country
+continent
+
+
+
+//  size
+//      descriptor, square_km
+//      CITY, 115
+//      STATE, 163537
+//      COUNTRY, 9984404
+//      CONTINENT, 24710000
