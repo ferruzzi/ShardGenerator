@@ -31,37 +31,40 @@ public class main {
     //      RECENTLY,
     //      CURRENTLY
 
-    //  technology         // defaults to NONE
+    //  technology              // defaults to NONE
     //      NONE                // only possible if inhabited == inhabited.NEVER
     //      ANCIENT,
     //      BEHIND,
     //      MODERN,
     //      ADVANCED
 
-    //  population         // defaults to NONE
+    //  population              // defaults to NONE
     //      NONE,
     //      SPARSE,
     //      AVERAGE,
     //      DENSE
 
-    //  baseRaces          // generate from external file??
-    //      HUMAN,
+    //  baseRaces               // generate from external file??
     //      DWARF,
     //      ELF,
     //      HALFLING,
+    //      HUMAN,
+    //      DRAGONBORN,
     //      GNOME,
+    //      HALFELF,
+    //      HALFORC,
     //      TIEFLING
 
-    //  exoticRaces        // generate from external file??
+    //  exoticRaces             // generate from external file??
 
-    //  racialDiversity    // defaults to NONE
+    //  racialDiversity         // defaults to NONE
     //      NONE,               // if picked and inhabited != inhabited.NEVER then pick any one race
     //      SOMEONE_MISSING,    // pick one basic race that is missing
     //      AVERAGE,
     //      SOMETHING_UNUSUAL,  // add one exotic race
     //      COMPLETELY_EXOTIC   // roll one exotic race
 
-    //  hostility          // defaults to NONE
+    //  hostility               // defaults to NONE
     //      NONE,
     //      PEACEFUL,
     //      FRIENDLY,
