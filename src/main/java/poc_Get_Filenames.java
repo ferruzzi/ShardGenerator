@@ -1,16 +1,11 @@
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.nio.file.*;
+import java.util.*;
+import java.util.stream.*;
 
 public class poc_Get_Filenames {
 
-    public static void main(String[] args){
+    public static List<String> main(){
         String dirName = "./src/main/resources/modules";
         List<String> list = new ArrayList<>();
 
@@ -19,19 +14,21 @@ public class poc_Get_Filenames {
                     .map(Path::toString).filter(f -> f.endsWith("module"))
                     .collect(Collectors.toList());
 
-            System.out.println(list);
+//            System.out.println(list);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
          for (int i = 0; i < list.size(); i++)
             parsePath(list, i);
+
+         return list;
     }
 
     public static void parsePath(List<String> list, int i) {
         String fullPath = list.get(i);
         String[] filenames = fullPath.split("\\\\", 6);
-        System.out.println(filenames[filenames.length-1]);
+//        System.out.println(filenames[filenames.length-1]);
         list.set(i,filenames[filenames.length-1]);
     }
 }

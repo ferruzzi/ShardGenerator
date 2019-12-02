@@ -1,13 +1,12 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
+
 
 public class poc_Get_Data {
 
-    public static void main(String[] args) {
+    public static void main(String fileName) {
 
-        String fileName = "./src/main/resources/modules/size.module";
+//        String fileName = "./src/main/resources/modules/size.module";
         String outLine =  "";
 
         outLine = parseTemplate(readFile(fileName));
@@ -17,13 +16,13 @@ public class poc_Get_Data {
 
     public static String parseTemplate(List<String> fileData){
 
-        // TODO: for each key in madLibs
-        // TODO:    find the index of the key in fileData
-        // TODO:    find the index of the next key (value starts with '[')
-        // TODO:    pick a random number betwixt those two
-        // TODO:    String status = madLibs.replace(key, fileData[number])
-        // TODO:        if (status == null) continue;
-        // TODO: generate a string, replacing the keywords in template  with the results in madLibs
+        // for each key in madLibs
+        //    find the index of the key in fileData
+        //    find the index of the next key (value starts with '[')
+        //    pick a random number betwixt those two
+        //    String status = madLibs.replace(key, fileData[number])
+        //        if (status == null) continue;
+        // generate a string, replacing the keywords in template  with the results in madLibs
 
         HashMap<String, String> madLibs = new HashMap<>();
         HashMap<String, String> finalPicks = new HashMap<>();
@@ -31,7 +30,7 @@ public class poc_Get_Data {
         String template = fileData.get(0);
         String result = template;
 
-        System.out.println(String.format("Original: %s \n", template));
+//        System.out.println(String.format("Original: %s \n", template));
 
         int startIndex = 0;
         int endIndex = 0;
@@ -42,11 +41,11 @@ public class poc_Get_Data {
             endIndex = template.indexOf('}', startIndex + 1) + 1;
             if (startIndex == -1) continue;
 
-            System.out.println(template.substring(startIndex, endIndex) + " found at start: " + startIndex + " end: " + endIndex);
+//            System.out.println(template.substring(startIndex, endIndex) + " found at start: " + startIndex + " end: " + endIndex);
             madLibs.put(template.substring(startIndex, endIndex), "");
         }
 
-        System.out.println("\nThere are a total of " + fileData.size() + " lines in the data file.");
+//        System.out.println("\nThere are a total of " + fileData.size() + " lines in the data file.");
 
 
         for (Map.Entry i : madLibs.entrySet()) {
@@ -67,20 +66,20 @@ public class poc_Get_Data {
                             break;
                         }
                     }
-                    System.out.println(keyword + " options are from lines " + optionStart + " to " + optionEnd);
+//                    System.out.println(keyword + " options are from lines " + optionStart + " to " + optionEnd);
                     int rand = r.nextInt(optionEnd - optionStart) + optionStart + 1;
+
+//                    System.out.println("\tpicking option " + rand + " for " + keyword + " which is " + choice);
+                    if (rand == fileData.size()) rand--;
                     choice = fileData.get(rand);
-
-                    System.out.println("\tpicking option " + rand + " for " + keyword + " which is " + choice);
-
                     finalPicks.put(keyword, choice);
                 }
             }
         }
 
-        System.out.println("\nFinal results:");
+//        System.out.println("\nFinal results:");
         for (String keys : finalPicks.keySet()) {
-            System.out.println(keys + " : " + finalPicks.get(keys));
+//            System.out.println(keys + " : " + finalPicks.get(keys));
             result = result.replace("{" + keys + "}", finalPicks.get(keys));
         }
 

@@ -1,0 +1,23 @@
+There are {race} settlements spread fairly {density} and they are {attitude} towards newcommers.
+
+[race]
+Dwarf
+Elf
+Halfling
+Human
+Dragonborn
+Gnome
+Half-elf
+Half-orc
+Tiefling
+
+[density]
+sparsely
+averagely
+densely
+
+[attitude]
+peaceful
+wary
+friendly
+aggressive
