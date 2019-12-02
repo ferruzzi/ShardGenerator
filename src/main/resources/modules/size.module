@@ -1,4 +1,8 @@
-The {item} is roughly {sqmk} square kilometers.  Roughly the size of a {descriptor} on the pre-sundered world.
+This {item} is roughly {sqkm} square kilometers.  Roughly the size of a {descriptor} on the pre-sundered world.
+
+[item]
+shard
+landmass
 
 [sqkm]
 115
