@@ -1,20 +1,16 @@
 import java.io.*;
 import java.util.*;
-
+import java.util.Map.Entry;
 
 public class poc_Get_Data {
-
     public static void main(String fileName) {
 
 //        String fileName = "./src/main/resources/modules/size.module";
-        String outLine =  "";
-
-        outLine = parseTemplate(readFile(fileName));
+        String outLine = parseTemplate(readFile(fileName));
         System.out.println(outLine);
-
     }
 
-    public static String parseTemplate(List<String> fileData){
+    public static String parseTemplate(List<String> fileData) {
 
         // for each key in madLibs
         //    find the index of the key in fileData
@@ -37,7 +33,7 @@ public class poc_Get_Data {
 
         // parse through the template and create a map where the keys are the template variables
         while (startIndex != -1) {
-            startIndex = template.indexOf('{',startIndex + 1);
+            startIndex = template.indexOf('{', startIndex + 1);
             endIndex = template.indexOf('}', startIndex + 1) + 1;
             if (startIndex == -1) continue;
 
@@ -48,20 +44,21 @@ public class poc_Get_Data {
 //        System.out.println("\nThere are a total of " + fileData.size() + " lines in the data file.");
 
 
-        for (Map.Entry i : madLibs.entrySet()) {
+        for (Entry<String, String> entry : madLibs.entrySet()) {
+            String key = entry.getKey();
             Random r = new Random();
-            String keyword = (String)i.getKey();
+            String keyword = key;
             String choice = "";
-            keyword = keyword.substring(1, keyword.length()-1);
+            keyword = keyword.substring(1, keyword.length() - 1);
             int optionStart = 0;
             int optionEnd = 0;
 
-            for (int j = 0 ; j < fileData.size(); j++) {
+            for (int j = 0; j < fileData.size(); j++) {
                 optionEnd = fileData.size();
-                if (fileData.get(j).contains("[" + keyword + "]")){
+                if (fileData.get(j).contains(String.format("[%s]", keyword))) {
                     optionStart = j;
                     for (int k = j + 1; k < fileData.size() - 1; k++) {
-                        if (fileData.get(k+1).startsWith("[")) {
+                        if (fileData.get(k + 1).startsWith("[")) {
                             optionEnd = k;
                             break;
                         }
@@ -80,8 +77,8 @@ public class poc_Get_Data {
 //        System.out.println("\nFinal results:");
         for (String keys : finalPicks.keySet()) {
 //            System.out.println(keys + " : " + finalPicks.get(keys));
-            result = result.replace("{" + keys + "}", finalPicks.get(keys));
-        }
+            result = result.replace(String.format("{%s}", keys), finalPicks.get(keys));
+            }
 
         return result;
     }

@@ -1,21 +1,20 @@
-import java.io.*;
 import java.util.*;
 
 public class main {
     public static void main(String[] args) {
         String dirName = "./src/main/resources/modules";
-        List<String> fileList = new ArrayList<>();
+        List<String> fileList = poc_Get_Filenames.main();
 
-        fileList = poc_Get_Filenames.main();
 //        System.out.println(fileList);
-        for (String i: fileList) {
+        for (String i : fileList) {
             String fullPath = dirName + "/" + i;
 //            System.out.println("Parsing file: " + fullPath);
             poc_Get_Data.main(fullPath);
         }
-
     }
+}
 
+/*
     public static List<String> readFile(String fileName){
         List<String> fileData = new ArrayList<>();
         BufferedReader reader;
@@ -37,3 +36,5 @@ public class main {
         return fileData;
     }
 }
+
+*/
